@@ -1,0 +1,7 @@
+FROM java:openjdk-7-jre
+MAINTAINER Ramana Rao <treerao@gmail.com>
+
+WORKDIR /aem
+CMD crx-quickstart/bin/quickstart
+EXPOSE 4502
+
