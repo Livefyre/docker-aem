@@ -8,6 +8,7 @@ memory. Hoping we can get away with 2 Gb, but my test runs were
 with 4 Gb
 
     docker-machine create aem-big --driver "virtualbox" --virtualbox-memory 2048
+    eval $(docker-machine env aem-big)
 
 Building a basic aem image, that can be used easily against a
 prepared CRX directory.  Building too much into the image doesn't
