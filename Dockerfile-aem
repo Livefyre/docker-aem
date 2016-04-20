@@ -1,7 +1,12 @@
-FROM java:openjdk-7-jre
+#FROM java:openjdk-7-jre
+FROM centos-openjdk
+
 MAINTAINER Ramana Rao <treerao@gmail.com>
 
 WORKDIR /aem
-CMD crx-quickstart/bin/quickstart
+CMD bash
+COPY start.sh /aem/start.sh
+ENTRYPOINT ./start.sh
+
 EXPOSE 4502
 
