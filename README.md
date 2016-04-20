@@ -16,7 +16,7 @@ add much benefit over mounting a prepared directory into the
 image.  The image just establishes a working dir, and provides a
 start command (not entrypoint, so can use it interactively).
 
-    docker build -t aem -f Dockerfile-aem .
+    docker build -t java-aem -f Dockerfile-aem .
 
 This image can be used to create a CRX directory or after one has
 been created.  It'll ignore all the installation files in its
@@ -26,16 +26,18 @@ working directory.
 
 To use that image
 
-1. create a working directory to contain all the required files:
+1. create a working directory to contain all the following files:
 
+ - license.properties
+ - YOUR_AEM_QUICKSTART_JAR
 
- - quickstart jar
- - license.properties and
- - a prebuilt content repository at "crx-quickstart/"
 
 2. Run the docker run command to start aem author in that directory
 
      ```bash
      cd workingdir;
-     docker run -v "$PWD:/aem" -p 4502:4502 -it -m 2048M aem
+     export AEM_AUTHOR_JAR=YOUR_AEM_QUICKSTART_JAR
+
+     # from ./run-aem.sh
+     docker run -v "$PWD:/aem" -m 2048 -e AEM_AUTHOR_JAR=$AEM_AUTHOR_JAR -p 4502:4502 java-aem
      ```
