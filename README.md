@@ -3,13 +3,17 @@
 
 ## Basic Setup
 
+Install [Docker Toolkit for Mac][dtmac] which will install all the docker tools and virtualbox if needed and so on.  (Soon, docker will release Docker for Mac which will eliminate the need for using Virtualbox and the docker-machine setup here.
+
+[dtmac]: https://docs.docker.com/mac/step_one/
+
 Setup a docker-machine.  Needs to have plenty of virutal
 memory. Hoping we can get away with 2 Gb, but my test runs were
 with 4 Gb
 
     docker-machine create aem-big --driver "virtualbox" --virtualbox-memory 2048
     eval $(docker-machine env aem-big)
-
+    
 Building a basic aem image, that can be used easily against a
 prepared CRX directory.  Building too much into the image doesn't
 add much benefit over mounting a prepared directory into the
@@ -39,5 +43,5 @@ To use that image
      export AEM_AUTHOR_JAR=YOUR_AEM_QUICKSTART_JAR
 
      # from ./run-aem.sh
-     docker run -v "$PWD:/aem" -m 2048 -e AEM_AUTHOR_JAR=$AEM_AUTHOR_JAR -p 4502:4502 java-aem
+     docker run -v "$PWD:/aem" -m 2048M -e AEM_AUTHOR_JAR=$AEM_AUTHOR_JAR -p 4502:4502 java-aem
      ```
