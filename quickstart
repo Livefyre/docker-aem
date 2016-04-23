@@ -114,5 +114,9 @@ if [ -z $CQ_JARFILE ]; then
 	CQ_JARFILE=`ls *.jar | head -1`
 fi
 
-echo "Starting Java w/options: $CQ_JVM_OPTS -jar $CQ_JARFILE $START_OPTS "
+echo
+echo "Starting Java w/ following options: "
+echo "  $CQ_JVM_OPTS -jar $CQ_JARFILE $START_OPTS"
+echo
+
 java $CQ_JVM_OPTS -jar $CQ_JARFILE $START_OPTS

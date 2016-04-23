@@ -1,18 +1,8 @@
 FROM centos
-MAINTAINER Ramana Rao <treerao@gmail.com>
-
-# Many attempts to find that 1.8 is best & OpenJDK works fine.
-#FROM java:openjdk-7-jre
-#FROM centos-openjdk
-#FROM tcnksm/centos-java
-#FROM centos-hotspot
-#FROM centos-openjdk8
-
 RUN yum install -y java-1.8.0-openjdk && yum clean all
 
-WORKDIR /aem
-CMD bash
-COPY start.sh /aem/start.sh
+MAINTAINER Ramana Rao <treerao@gmail.com>
+WORKDIR /opt/aem
 ENTRYPOINT ./start.sh
 
 EXPOSE 4502
