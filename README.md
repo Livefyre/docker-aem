@@ -109,4 +109,30 @@ are needed.
     4. Click "Configure Now"
     5. Give the configuration a title and name, click Create
     6. Then enter the Network Domain, Network Key, Site ID, Site Key
-    7. Click OK, then AEM to get out of there!
+    7. Click OK, then "Cloud Services" in the breadcrumb to get out of there!
+    
+## Use Livefyre components on an AEM site/page
+
+Now to use Livefyre components on a page, you'll want to do the following:
+
+1. Apply the configuration to a Page
+    1. Go to Projects page, URL will look like http://192.168.99.100:4502/projects.html 
+    2. Select a Page by mousing over a project collection, clicking the "pencil" icon
+    3. Open a Page in the Page Editor
+    4. Click "Open Properties", top left corner looks like a series of silders
+    5. Click to the "Cloud Services" panel
+    6. Uncheck a box that says "Inherit ... blah blah blah"
+    6. Click "Add Confguration", Choose Livefyre
+    7. It should pick the one you created, if you have more than one configuration chose it here.
+    8. Press the check in the top right corner
+
+2. Configuring Available Components
+    0. This screencast intends to show how to do the following steps, http://d.pr/v/U5yR
+    1. Given an open page being edited
+    2. Ensure you are in "Design" mode
+    3. Select a component container by clicking on one
+    4. For the selected container click the newspaper icon
+    5. This will expand the container selection to its parent and surface a wrench icon 
+    6. Clicking the wrench icon will allow you to configure available components for that section
+    7. Find Livefyre (don't be fulled by alphabetization of sublevels) and enable it by selecting the top level checkbox
+
