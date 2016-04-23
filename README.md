@@ -11,11 +11,10 @@ for using Virtualbox and the docker-machine setup here.)
 [dmac]: https://blog.docker.com/2016/03/docker-for-mac-windows-beta/
 
 Setup a docker-machine.  Needs to have plenty of virutal
-memory. Hoping we can get away with 2 Gb, but my test runs were
-with 4 Gb
+memory, 2 Gb looks sufficient, but could give it more.
 
-    docker-machine create aem-big --driver "virtualbox" --virtualbox-memory 2048
-    eval $(docker-machine env aem-big)
+    docker-machine create aem --driver "virtualbox" --virtualbox-memory 2048
+    eval $(docker-machine env aem)
 
 ## Building a base AEM image
 
@@ -61,11 +60,36 @@ To use that image to run AEM
       # docker run -v "$PWD:/aem" -m 2048M -e AEM_AUTHOR_JAR=$AEM_AUTHOR_JAR -p 4502:4502 centos-aem
      ```
 
-4. It'll take a while, but eventually you'll have a running AEM,
-that you can access at a network address on the docker
-network. The following is likely to work for you on a Macbook:
+The terminal will now be occupied by the running docker
+container, so you will need a 2nd terminal for further steps.
+(Easy enough to do different things here with a little docker
+knowledge e.g. detach this container, and observe its logs with
+docker commands when needed.)
+
+4. It'll take a while, but eventually you'll have a running
+AEM. You will see a message in that console that says "Quickstart
+started." At this point you will be able to login to AEM in your
+browser at the network address of the docker-machine you created.
+The following is likely to work for you on a Macbook. If you've
+created other docker machines before, than you might need to
+change the 100 to 101 or 102, but you can tell from the ls
+command:
 
       ```bash
-      open http://192.168.99.100:4502/
+      docker-machine ls
+      export AEM_HOST=192.168.99.100
+      open http://$AEM_HOST:4502/
       ```
 
+5. After you can login, run a script that will install the
+Livefyre package and make some generic configuration changes that
+are needed.
+
+      ```bash
+      scripts/lfsetup
+      ```
+
+6. At this point, you'll be have to setup your Livefyre cloud
+   service config, and do the required things to apply this
+   config to sites/pages on which you want to use Livefyre
+   components

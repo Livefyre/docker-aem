@@ -3,7 +3,7 @@ RUN yum install -y java-1.8.0-openjdk && yum clean all
 
 MAINTAINER Ramana Rao <treerao@gmail.com>
 WORKDIR /opt/aem
-ENTRYPOINT ./start.sh
+CMD ./start.sh
 
 EXPOSE 4502
 
