@@ -26,14 +26,20 @@ If you do that you can build the docker image and certainly everything else in t
 
 ## Building a base AEM image
 
-Building a basic aem image, that can be used easily against a
-prepared CRX directory.  Building too much into the image doesn't
-add much benefit over bind mounting a directory into the a
-running container.  So the image just establishes a working dir,
-and provides a entrypoint command.
+1. Create a working directory by cloning this git repo
 
+     ```bash
+     git clone git@github.com:Livefyre/docker-aem
+     cd docker-aem
+     ```
 
+2. Build an aem image.  Building too much into the image doesn't 
+   add much value over bind mounting a directory into the a running container.
+   So the image just establishes a working dir, and provides a entrypoint command.
+
+    ```bash
     docker build -t centos-aem -f Dockerfile-aem .
+    ```
 
 Note: the .dockerignore will prevent jars and other installation
 materials from being pushed into the build context. You can
@@ -43,13 +49,6 @@ ignore this note if it's gibberish to you.
 ## Starting an AEM Author instance
 
 To use that image to run AEM
-
-1. Create a working directory by cloning this git repo
-
-     ```bash
-     git clone git@github.com:Livefyre/docker-aem
-     cd docker-aem
-     ```
 
 2. Add the installation files to the directory
 
@@ -82,14 +81,11 @@ docker commands when needed.)
 
 1. After, AEM is fully running, you will be able to login to AEM in your
 browser at the network address of the docker-machine you created.
-The following is likely to work for you on a Macbook. If you've
-created other docker machines before, than you might need to
-change the 100 to 101 or 102, but you can tell from the ls
-command:
+The following is likely to work for you on a Macbook:
 
       ```bash
       docker-machine ls
-      export AEM_HOST=192.168.99.100
+      export AEM_HOST=$(docker-machine ip aem)
       open http://$AEM_HOST:4502/
       ```
 
@@ -98,7 +94,8 @@ Livefyre package and make some generic configuration changes that
 are needed.
 
       ```bash
-      scripts/lfsetup
+      cd <workingdir> # as above
+      scripts/lfsetup.sh
       ```
 
 3. At this point, you must setup your Livefyre cloud
