@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/bin/bash
 
 curl -u admin:admin -F file=@"Livefyre-AEM-Package.zip" -F name="Livefyre" \
 -F force=true -F install=true http://$AEM_HOST:4502/crx/packmgr/service.jsp
