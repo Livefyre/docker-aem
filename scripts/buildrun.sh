@@ -1,13 +1,11 @@
 #!/bin/bash
 
-if [ -z "$AEM_AUTHOR_JAR" ]; then
-    echo "Assuming the following quickstart jar:"
-    export AEM_AUTHOR_JAR=cq-author-quickstart-6.1.0.jar
-    echo "   $AEM_AUTHOR_JAR"
+if [ -z "$1" ]; then
+    echo "Using docker-machine aem"
+    docker-machine create aem --driver "virtualbox" --virtualbox-memory 2048
+    eval $(docker-machine env aem)
 fi
 
-docker-machine create aem --driver "virtualbox" --virtualbox-memory 2048
-eval $(docker-machine env aem)
 docker build -t centos-aem -f Dockerfile-aem .
 scripts/run-aem.sh
 scripts/postbuild.sh
