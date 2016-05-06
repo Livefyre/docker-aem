@@ -171,17 +171,17 @@ sites/pages you want to use livefyre.
 
 ####Stopping your Docker AEM instance
 
-      ```bash
-      docker-machine stop aem
-      ```
+   ```bash
+   docker-machine stop aem
+   ```
 
 ####Restarting your Docker AEM instance
 
-      ```bash
-      docker-machine start aem
-      eval $(docker-machine env aem)
-      docker ps -a
-      docker start {CONTAINER ID}
-      ```
+   ```bash
+   docker-machine start aem
+   eval $(docker-machine env aem)
+   docker ps -a
+   docker start {CONTAINER ID}
+   ```
 
 It may take some time to restart AEM. You can monitor the progress by tailing the logs with `tail -f crx-quickstart/logs/error.log`
