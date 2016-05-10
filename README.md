@@ -16,7 +16,7 @@ Terminal
 login, and
 
     ```bash
-     git clone https://github.com:Livefyre/docker-aem
+     git clone https://github.com/Livefyre/docker-aem
      cd docker-aem
     ```
 
